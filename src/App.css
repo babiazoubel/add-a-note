@@ -1,0 +1,11 @@
+.container {
+  max-width: 500px;
+  margin: 30px auto;
+  overflow: auto;
+  min-height: 300px;
+  border: 3px solid rgb(189, 87, 28);
+  padding: 30px;
+  border-radius: 10px;
+  background-color: rgb(78, 78, 78);
+  
+}
