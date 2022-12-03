@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 import './App.css';
+import moment from 'moment';
 import AddTask from './components/AddTask';
 import Tasks from './components/Tasks';
 
@@ -9,19 +10,21 @@ const App = () => {
 
   const handleTaskClick = (taskId) => {
     const newTasks = tasks.map((task) => {
-      if (task.id === taskId) return { ...task, completed: !task.completed };
+      task.id = taskId;
     });
     setTasks(newTasks);
   };
 
   const handleTaskAdd = (taskText, taskTitle) => {
+    const date = `(${moment().format('MMM Mo HH:mm A')})`;
     const newTasks = [
       ...tasks,
       {
         text: taskText,
         title: taskTitle,
         id: uuidv4(), //set an random id number from npm library
-        completed: false,
+        date: date,
+        updateTask: { updateTask },
       },
     ];
     setTasks(newTasks);
@@ -32,6 +35,18 @@ const App = () => {
     setTasks(newTasks);
   };
 
+  const updateTask = (taskId, newTitle, newText, newDate) => {
+    const updatedTask = tasks.map((task) => {
+      if (task.id === taskId) {
+        return { ...task, text: newTitle, title: newText, date: newDate };
+      }
+      return task;
+    });
+
+    setTasks(updatedTask);
+  };
+
+ 
   return (
     <>
       <div className="container">
@@ -41,6 +56,7 @@ const App = () => {
           tasks={tasks}
           handleTaskClick={handleTaskClick}
           handleTaskRemove={handleTaskRemove}
+          updateTask={updateTask}
         />
       </div>
     </>

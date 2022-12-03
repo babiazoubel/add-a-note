@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+
 import './AddTask.css';
 import Button from './Button';
 
@@ -17,7 +18,7 @@ const AddTask = ({ handleTaskAdd }) => {
     if (inputData.length > 0) {
       handleTaskAdd(inputTitle, inputData);
     }
-
+    
     setImputData(''); //to clean the input after
     setInputTitle('');
   };

@@ -22,16 +22,11 @@
   align-items: center;
 }
 
-.task-title {
-  cursor: pointer;
-}
-
 .date {
   margin-left: 20px;
 }
 
-.remove-task-button,
-.button-container {
+.remove-task-button {
   border: none;
   border-radius: 50%;
   width: 30px;
@@ -39,4 +34,9 @@
   background-color: rgb(171, 52, 9);
   font-size: 16px;
   color: rgb(255, 255, 255);
+}
+
+.button-container {
+  display: flex;
+  gap: 20px;
 }
